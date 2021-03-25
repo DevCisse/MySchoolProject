@@ -18,7 +18,7 @@ namespace MySchoolProject.Models
 
         public EntryLevel EntryLevel { get; set; }
 
-        public int DepartmentId { get; set; }
+        public int DepartmentId { get; set; } 
         public Department Department { get; set; }
 
 

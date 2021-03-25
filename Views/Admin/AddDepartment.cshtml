@@ -1,0 +1,70 @@
+﻿@model AddDepartmentViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-file-text-o"></i> Form elements</h3>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+            <li><i class="icon_document_alt"></i>Forms</li>
+            <li><i class="fa fa-file-text-o"></i>Form elements</li>
+        </ol>
+    </div>
+</div>
+
+<h2>
+    <a asp-action="ListDepartments" class="btn btn-primary"> List Departments</a> <a asp-action="ListFaculties" class="btn btn-primary"> List Faculties</a>
+</h2>
+
+<section class="panel">
+    <header class="panel-heading">
+        Form Elements
+    </header>
+    <div class="panel-body">
+        <div asp-validation-summary="All"></div>
+        <form class="form-horizontal " method="post" asp-action="AddDepartment">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" asp-for="Department.Name">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="Department.Name">
+                    <span asp-validation-for="Department.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" asp-for="Department.Acronym">Acronym</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="Department.Acronym">
+                    <span asp-validation-for="Department.Acronym" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" asp-for="Department.FacultyId">Department</label>
+                <div class="col-sm-10">
+                    <select class="form-control" asp-for="Department.FacultyId">
+                        <option selected disabled> Select Department</option>
+                        @foreach (var item in Model.Faculties)
+                        {
+                            <option value="@item.Id"> @item.Name</option>
+                        }
+
+                    </select>
+                    <span asp-validation-for="Department.FacultyId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</section>

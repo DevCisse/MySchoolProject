@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySchoolProject.Data;
 using MySchoolProject.Models;
+using MySchoolProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,8 @@ namespace MySchoolProject
             services.AddTransient<SqlConnection>(e => new SqlConnection(connectionString));
             services.AddTransient<DbOperations>();
 
+
+            services.AddScoped<ISchoolService,SchoolService>();
 
 
             services.AddDbContextPool<AppDbContext>(options =>
